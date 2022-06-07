@@ -1,33 +1,24 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  useEffect(() => {
-    if (window.confirm('Você é homem?')) {
-      console.log('Homem');
-    } else {
-      console.log('Mulher');
-    }
-  }, []);
+  const emailLength = useMemo(() => {
+    console.log('executou');
+    return email.length * 1000;
+  }, [email.length]);
 
-  useEffect(() => {
-    console.log('Email:', email);
-  }, [email]);
-
-  useEffect(() => {
-    console.log('Password:', password);
-  }, [password]);
-
-  const handleEntrar = () => {
-    console.log(email, password);
-  };
+  const handleEntrar = useCallback(() => {
+    console.log(email);
+    console.log(password);
+  }, [email, password]);
 
   return (
     <>
       <form>
+        <p>Quantidade de caracteres do email: {emailLength}</p>
+
         <label>
           <span>Email</span>
           <input
