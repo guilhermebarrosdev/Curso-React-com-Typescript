@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-interface ITarefa {
+export interface ITarefa {
   id: number;
   title: string;
   isCompleted: boolean;
