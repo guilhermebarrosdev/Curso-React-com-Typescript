@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface IButtonLoginProps {
   type?: 'button' | 'submit' | 'reset' | undefined;
   onClick: () => void;
