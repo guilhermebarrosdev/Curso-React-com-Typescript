@@ -48,9 +48,6 @@ export const Login = () => {
           onChange={(newValue) => setPassword(newValue)}
         />
 
-        {/* <button type="button" onClick={handleEntrar}>
-          Entrar
-        </button> */}
         <ButtonLogin type="button" onClick={handleEntrar}>
           Entrar
         </ButtonLogin>
