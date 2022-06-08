@@ -1,10 +1,13 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useContext, useMemo, useRef, useState } from 'react';
+import { UsuarioLogadoContext } from '../../shared/context';
 
 import { ButtonLogin } from './components/ButtonLogin';
 import { InputLogin } from './components/InputLogin';
 
 export const Login = () => {
   const inputPasswordRef = useRef<HTMLInputElement>(null);
+
+  const { nomeDoUsuario } = useContext(UsuarioLogadoContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,6 +32,7 @@ export const Login = () => {
           margin: '10px',
         }}
       >
+        <p>{nomeDoUsuario}</p>
         <p>Quantidade de caracteres do email: {emailLength}</p>
 
         <InputLogin
