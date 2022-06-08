@@ -9,11 +9,6 @@
       "title": "Tarefa 02",
       "isCompleted": true,
       "id": 2
-    },
-    {
-      "title": "Tarefa 04",
-      "isCompleted": false,
-      "id": 4
     }
   ]
 }
