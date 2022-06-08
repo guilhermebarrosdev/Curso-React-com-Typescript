@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+
 import { ApiException } from '../../shared/services/api/ApiException';
 import {
   ITarefa,
@@ -16,22 +17,26 @@ export const Dashboard = () => {
   }, []);
 
   const handleInputKeyDown: React.KeyboardEventHandler<HTMLInputElement> =
-    useCallback((event) => {
-      if (event.key === 'Enter') {
-        if (event.currentTarget.value.trim().length === 0) return;
-        const value = event.currentTarget.value;
-        event.currentTarget.value = '';
+    useCallback(
+      (event) => {
+        if (event.key === 'Enter') {
+          if (event.currentTarget.value.trim().length === 0) return;
 
-        setLista((oldLista) => {
-          if (oldLista.some((ListItem) => ListItem.title === value))
-            return oldLista;
-          return [
-            ...oldLista,
-            { id: oldLista.length, title: value, isCompleted: false },
-          ];
-        });
-      }
-    }, []);
+          const value = event.currentTarget.value;
+
+          event.currentTarget.value = '';
+          if (lista.some((ListItem) => ListItem.title === value)) return;
+
+          TarefasService.create({ title: value, isCompleted: false }).then(
+            (result) => {
+              if (result instanceof ApiException) alert(result.message);
+              else setLista((oldLista) => [...oldLista, result]);
+            }
+          );
+        }
+      },
+      [lista]
+    );
 
   return (
     <div>
