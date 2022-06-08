@@ -61,6 +61,19 @@ export const Dashboard = () => {
     },
     [lista]
   );
+  const handleDelete = useCallback((id: number) => {
+    const tarefaToUpdate = lista.find((tarefa) => tarefa.id === id);
+    if (!tarefaToUpdate) return;
+
+    TarefasService.deleteById(id).then((result) => {
+      if (result instanceof ApiException) alert(result.message);
+      else {
+        setLista((oldLista) => {
+          return oldLista.filter((oldListaItem) => oldListaItem.id !== id);
+        });
+      }
+    });
+  }, []);
 
   return (
     <div>
@@ -81,6 +94,8 @@ export const Dashboard = () => {
               />
 
               {listItem.title}
+
+              <button onClick={() => handleDelete(listItem.id)}>Apagar</button>
             </li>
           );
         })}
