@@ -33,6 +33,7 @@ export const Login = () => {
           type="email"
           label="Email"
           value={email}
+          ref={inputPasswordRef}
           onChange={(newValue) => setEmail(newValue)}
           onPressEnter={() => inputPasswordRef.current?.focus()}
         />
@@ -41,6 +42,7 @@ export const Login = () => {
           type="password"
           label="Password"
           value={password}
+          ref={inputPasswordRef}
           onChange={(newValue) => setPassword(newValue)}
         />
 
