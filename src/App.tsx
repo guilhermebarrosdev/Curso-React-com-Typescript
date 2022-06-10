@@ -4,7 +4,7 @@ import { UsuarioLogadoProvider } from './app/shared/context';
 export const App = () => {
   return (
     <UsuarioLogadoProvider>
-      <AppRoutes />;
+      <AppRoutes />
     </UsuarioLogadoProvider>
   );
 };
